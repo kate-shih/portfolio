@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>The Secret Life of Plants</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <div class="main-grid">
+      <aside class="sidebar">
+        <div class="sidebar-inner">
+          <a href="index.html" class="sidebar-brand-link">
+            <h1 class="side-brand">kate shih</h1>
+            <h2 class="side-project">HackTX 2025</h2>
+          </a>
+          <p class="side-desc">An immersive experience created through engaging visuals and dynamic interactions.</p>
+
+          <div class="panel nav-panel">
+            <h4>jump to...</h4>
+            <ul>
+              <li><a href="#overview">overview</a></li>
+              <li><a href="#inspiration">process</a></li>
+              <li><a href="#final">the product</a></li>
+            </ul>
+          </div>
+
+          <div class="panel exp-panel">
+            <h4>role</h4>
+            <p class="exp-credits">Designer</p>
+            <h4>tools</h4>
+            <p class="exp-credits">Figma, Illustrator</p>
+            <h4 class="exp-sub">timeline</h4>
+            <p class="exp-credits">Summer – Fall 2025</p>
+          </div>
+        </div>
+      </aside>
+
+      <main class="content">
+        <div class="content-inner">
+
+          <a href="index.html" class="case-backlink">← back to work</a>
+
+          <header class="case-header">
+            <h1 class="case-title">Setting the Mood for UT Austin's Largest Hackathon</h1>
+            <div class="case-meta">
+              <div>HackTX 2025</div>
+            </div>
+          </header>
+
+          <section class="case-hero reveal">
+            <img src="hacktx/hacktx-hero.png" alt="project preview" class="case-hero-img" />
+          </section>
+
+           <section id="overview" class="case-overview reveal">
+            <h3>overview</h3>
+            <p><strong>HackTX is an annual hackathon hosted at UT Austin.</strong></p>
+            <br>
+            <p>I worked on the creative team designing the event website. Our goal was to create a site that would both attract and excite participants, so we chose a celestial theme to evoke a sense of wonder and creativity. I focused on crafting an immersive experience through engaging visuals and dynamic interactions, resulting in a website that captured attention and enhanced the event’s identity.</p>
+          </section>
+
+          <section id="inspiration" class="case-problem reveal">
+            <h3>inspiration</h3>
+            <p class="problem-text">Our inspiration came from a variety of sources, including other hackathon websites and immersive web experiences, keeping in mind both desktop and mobile concerns.</p>
+            <figure class="image-figure">
+              <img src="hacktx/hacktx-inspo.png" class="case-image" />
+            </figure>
+            <br>
+            <p class="problem-text">We also took a lot of visual inspiration from graphics we found online. Take a look at our moodboard!</p>
+            <figure class="image-figure">
+              <img src="hacktx/hacktx-moodboard.png" class="case-image" />
+            </figure>
+          </section>
+
+          <section id="ideation" class="features reveal">
+            <h3>ideation</h3>
+            <p class="flow-text">We then translated our ideas into sketches and low-fidelity prototypes, experimenting with elements like shooting stars, ornate gold borders, constellations, and dynamic backgrounds. These early designs helped us explore the celestial theme and refine the visual and interactive direction before moving into higher-fidelity development.</p>
+            <p class="flow-text">This decision helped me move from a vague concept to a clear design goal: learning through a medium that feels lighthearted and surprising. My persona reinforced this choice by highlighting users’ need for understanding, participation, and leisure, all of which could be met through a comic. Creating an early hypothesis and sketch also helped me visualize what I wanted to design and identify the key aspects I needed to include.</p>
+            <figure class="image-figure">
+              <img src="hacktx/hacktx-sketches.png" alt="sketches" class="case-image" />
+              <figcaption class="case-caption">initial sketches</figcaption>
+            </figure>
+            <figure class="image-figure">
+              <img src="hacktx/hacktx-lofi.png" alt="low-fidelity prototype" class="case-image" />
+              <figcaption class="case-caption">low-fidelity prototype</figcaption>
+            </figure>
+          </section>
+
+          <section id="final" class="case-overview reveal">
+            <h3>the final site</h3>
+            <p>Afterward, we developed a high-fidelity prototype of the site, creating custom graphics to bring our celestial theme to life. Once the design was finalized, we handed it off to the development team, who brought the vision to reality!</p>
+            <figure class="image-figure">
+              <img src="hacktx/hacktx-hifi.png" alt="website in use" class="case-image" />
+              <figcaption class="case-caption">high-fidelity mockups</figcaption>
+            </figure>
+            <button>Visit the live site here</button>
+          </section>
+
+          <section class="case-closing reveal">
+            <h3 id="final-thoughts">final thoughts</h3>
+            <p>This was such a fun project that allowed me to be more creative than usual. I enjoyed the opportunity to develop a cohesive brand for an entire hackathon and translate that vision across the website, graphics, merch, and the event as a whole. It was rewarding to experiment freely and play with ideas in a way that felt less constrained than typical client or class projects, making the process both fun and creatively fulfilling.</p>
+          </section>
+
+          <script>
+            document.addEventListener('DOMContentLoaded', function () {
+              // Reveal-on-scroll using IntersectionObserver
+              const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                  }
+                });
+              }, { threshold: 0.12 });
+              document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+              // Smooth scroll with offset for sidebar nav links
+              const navLinks = document.querySelectorAll('.nav-panel a[href^="#"]');
+              const offset = 28; // account for sidebar top spacing
+              navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                  e.preventDefault();
+                  const target = document.querySelector(link.getAttribute('href'));
+                  if (!target) return;
+                  // Immediately mark this link as active when clicked
+                  navLinks.forEach(l => l.classList.remove('active'));
+                  link.classList.add('active');
+                  // Then scroll to it
+                  const top = window.scrollY + target.getBoundingClientRect().top - offset - 8;
+                  window.scrollTo({ top, behavior: 'smooth' });
+                });
+              });
+
+              // Basic scrollspy to highlight active nav link
+              const sections = Array.from(document.querySelectorAll('section[id]'));
+              let scrollspyTimeout;
+              function onScroll() {
+                const pos = window.scrollY + window.innerHeight / 3;
+                let current = sections.slice().reverse().find(s => s.offsetTop <= pos);
+                navLinks.forEach(l => l.classList.remove('active'));
+                if (current) {
+                  const active = document.querySelector('.nav-panel a[href="#' + current.id + '"]');
+                  if (active) active.classList.add('active');
+                }
+              }
+              window.addEventListener('scroll', () => {
+                clearTimeout(scrollspyTimeout);
+                scrollspyTimeout = setTimeout(onScroll, 100);
+              }, { passive: true });
+              onScroll();
+            });
+          </script>
+
+        </div>
+      </main>
+    </div>
+
+  </body>
+</html>

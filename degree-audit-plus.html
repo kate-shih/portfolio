@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Degree Audit Plus</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <div class="main-grid">
+      <aside class="sidebar">
+        <div class="sidebar-inner">
+            <a href="index.html" class="sidebar-brand-link">
+              <h1 class="side-brand">kate shih</h1>
+              <h2 class="side-project">Degree Audit Plus</h2>
+            </a>
+            <p class="side-desc">A browser extension that reimagines UT Austin’s Interactive Degree Audit with a visual, intuitive progress experience.</p>
+          <div class="panel nav-panel">
+            <h4>jump to...</h4>
+            <ul>
+              <li><a href="#overview">overview</a></li>
+              <li><a href="#problem">process</a></li>
+              <li><a href="#features">the product</a></li>
+            </ul>
+          </div>
+
+          <div class="panel exp-panel">
+            <h4>role</h4>
+            <p class="exp-credits">UX Design Lead</p>
+            <h4>tools</h4>
+            <p class="exp-credits">Figma, Linear</p>
+            <h4 class="exp-sub">timeline</h4>
+            <p class="exp-credits">Ongoing, Fall 2025 – Present</p>
+          </div>
+        </div>
+      </aside>
+
+      <main class="content">
+        <div class="content-inner">
+
+          <a href="index.html" class="case-backlink">← back to work</a>
+
+          <header class="case-header">
+            <h1 class="case-title">Redesigning UT Austin's Degree Audit</h1>
+            <div class="case-meta">
+              <div>Longhorn Developers</div>
+            </div>
+          </header>
+
+          <section class="case-hero reveal">
+            <img src="dap/dap-hero.png" alt="project preview" class="case-hero-img" />
+          </section>
+
+           <section id="overview" class="case-overview reveal">
+            <h3>overview</h3>
+            <p><strong>How can we help students actually understand their degree progress without overwhelming them?</strong></p>
+            <br>
+            <p>I lead the design of Degree Audit Plus, a browser extension that reimagines UT’s Interactive Degree Audit. I focus on turning dense, hard-to-scan requirements into a more visual, intuitive experience that helps students understand progress and plan ahead with confidence.</p>
+          </section>
+
+          <section id="problem" class="case-problem reveal">
+            <h3>problem</h3>
+            <p class="problem-text">Many students struggle to make sense of their degree audits. It’s hard to quickly tell what’s done, what’s still missing, and how future classes might impact graduation. This creates unnecessary stress and often forces students to rely heavily on advising for questions that should be easy to answer on their own.</p>
+            <figure class="image-figure">
+              <img src="dap/dap-screens-1.png" alt="current degree audit interface showing dense requirements" class="case-image" />
+              <figcaption class="case-caption">current audit</figcaption>
+            </figure>
+            <div class="problem-card">
+              <p class="problem-title">Degree Audit Plus is a browser extension that reimagines UT Austin’s Interactive Degree Audit (IDA). The existing system contains a lot of important information, but it’s dense and hard to scan.</p>
+              <br>
+              <p>Our goal was to turn that information into something more visual, intuitive, and confidence-building so students can better understand their degree progress and plan ahead.</p>
+            </div>
+          </section>
+
+          <section id="features" class="features reveal">
+            <h3>core features</h3>
+            <p class="points-text">Because degree audits are inherently complicated, my main focus was reducing cognitive load and making information easier to scan.</p>
+            <div class="feature-images">
+              <figure class="image-figure">
+                <img src="dap/checklist-view.png" alt="checklist view showing degree progress by requirement" class="case-image" />
+                <figcaption class="case-caption">checklist view</figcaption>
+              </figure>
+              <figure class="image-figure">
+                <img src="dap/planner-view.png" alt="planner view for visualizing future semesters" class="case-image" />
+                <figcaption class="case-caption">planner view</figcaption>
+              </figure>
+            </div>
+            <div class="points-grid">
+              <article class="point-card">
+                <p class="point-title">progress overview</p>
+                <br>
+                <p>A high-level progress overview so students immediately know where they stand</p>
+              </article>
+              <article class="point-card">
+                <p class="point-title">visual grouping</p>
+                <br>
+                <p>Clear visual grouping of requirements (Core, Major, Minor, Electives) + color and status indicators to show what’s complete, in progress, or missing</p>
+              </article>
+              <article class="point-card">
+                <p class="point-title">planning features</p>
+                <br>
+                <p>The ability to add hypothetical courses and see how they impact progress</p>
+              </article>
+            </div>
+          </section>
+
+          <section id="current" class="case-overview reveal">
+            <h3>where the project is now</h3>
+            <p>Right now, we’re finishing high-fidelity screens and handing them off to development. I’ve been working closely with engineers to answer questions, refine interactions, and make sure designs translate smoothly into code.</p>
+            <br>
+            <p>Once development is further along, we’ll move into user testing with UT students to see whether the interface actually feels clearer, if students feel more confident planning ahead, and where things still feel confusing or overwhelming.</p>
+          </section>
+
+          <section class="case-closing reveal">
+            <h3 id="onward">onward!</h3>
+            <p>Degree Audit Plus is still very much a work in progress, but the goal is simple: make degree planning feel less intimidating, and a lot more human.</p>
+          </section>
+
+          <script>
+            document.addEventListener('DOMContentLoaded', function () {
+              // Reveal-on-scroll using IntersectionObserver
+              const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                  }
+                });
+              }, { threshold: 0.12 });
+              document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+              // Smooth scroll with offset for sidebar nav links
+              const navLinks = document.querySelectorAll('.nav-panel a[href^="#"]');
+              const offset = 28; // account for sidebar top spacing
+              navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                  e.preventDefault();
+                  const target = document.querySelector(link.getAttribute('href'));
+                  if (!target) return;
+                  // Immediately mark this link as active when clicked
+                  navLinks.forEach(l => l.classList.remove('active'));
+                  link.classList.add('active');
+                  // Then scroll to it
+                  const top = window.scrollY + target.getBoundingClientRect().top - offset - 8;
+                  window.scrollTo({ top, behavior: 'smooth' });
+                });
+              });
+
+              // Basic scrollspy to highlight active nav link
+              const sections = Array.from(document.querySelectorAll('section[id]'));
+              let scrollspyTimeout;
+              function onScroll() {
+                const pos = window.scrollY + window.innerHeight / 3;
+                let current = sections.slice().reverse().find(s => s.offsetTop <= pos);
+                navLinks.forEach(l => l.classList.remove('active'));
+                if (current) {
+                  const active = document.querySelector('.nav-panel a[href="#' + current.id + '"]');
+                  if (active) active.classList.add('active');
+                }
+              }
+              window.addEventListener('scroll', () => {
+                clearTimeout(scrollspyTimeout);
+                scrollspyTimeout = setTimeout(onScroll, 100);
+              }, { passive: true });
+              onScroll();
+            });
+          </script>
+
+        </div>
+      </main>
+    </div>
+
+  </body>
+</html>
