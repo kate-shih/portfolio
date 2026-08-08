@@ -100,8 +100,8 @@ body { background:#ffffff; }
 @media (max-width:980px){ .main-grid{ grid-template-columns:260px 1fr; gap:20px; padding:0 16px; } }
 @media (max-width:720px){
   .main-grid{ grid-template-columns:1fr; margin-top:18px; }
-  .sidebar{ order:2; }
-  .content-inner{ order:1; }
+  .sidebar{ order:1; }
+  .content{ order:2; }
   .projects-grid{ grid-template-columns:1fr; }
   .project-date{ position:static; margin-top:10px; }
   .sidebar{ position:static; max-height:none; overflow:visible; }
@@ -200,6 +200,34 @@ body { background:#ffffff; }
 
 /* Increase vertical spacing between main content sections */
 .content-inner > section { margin-bottom: 60px; }
+
+/* Collapsible "recently" panel on mobile */
+@media (max-width:720px){
+  .exp-panel.collapsible .exp-item:not(:first-child){
+    display: none;
+  }
+  .exp-panel .exp-toggle{
+    display: none;
+  }
+  .exp-panel.collapsible .exp-toggle{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap:8px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px 10px;
+    background: transparent;
+    color: #c5647a;
+    border: 1px solid rgba(197,100,122,0.12);
+    border-radius:6px;
+    cursor: pointer;
+    font-weight:600;
+  }
+  .exp-panel .exp-toggle .caret{ display:inline-block; transition:transform 200ms ease; }
+  .exp-panel.collapsible.expanded .exp-item{ display:block; }
+  .exp-panel.collapsible.expanded .exp-toggle .caret{ transform: rotate(180deg); }
+}
 
 /* Generic button styles */
 .btn, button, input[type="button"], input[type="submit"] {
