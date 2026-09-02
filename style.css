@@ -75,7 +75,7 @@ body { background:#FFF8F9;}
 
 /* content */
 .content{ background:white; margin:24px 24px 24px -24px; border-radius:8px; }
-.content-inner{ padding:40px 120px 60px; }
+.content-inner{ padding:40px 120px 0; }
 
 .intro-header{ margin-top:25px; margin-bottom:50px; }
 .intro-title{ margin:0 0 0px 0; font-size:2.5rem; color:#241d23; font-weight:700; text-transform:lowercase; }
