@@ -296,3 +296,6 @@ body { background:#FFF8F9;}
   font-style: italic;
   margin: 0 0 18px 0;
 }
+
+.case-closing a { color: #c5647a; text-decoration: underline; text-underline-offset: 3px; }
+.case-closing a:hover { color: #a84e64; }

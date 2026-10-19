@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Genomic Variant Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.png" type="image/png">
+  </head>
+  <body>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="index.html" class="brand-link"><span class="brand">kate shih</span></a>
+        <nav class="top-nav">
+          <a href="index.html#work">work</a>
+          <a href="about.html">about</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="main-grid">
+      <main class="content">
+        <div class="content-inner">
+
+          <header class="case-header">
+            <h1 class="case-title">Making Genomic Data Easier to Explore</h1>
+            <div class="case-meta">
+              <div>Epic Systems</div>
+            </div>
+          </header>
+
+          <section class="case-hero reveal">
+            <img src="variant/genomics-thumbnail.png" alt="Variant Visualizer preview" class="case-hero-img" />
+          </section>
+
+          <section id="overview" class="case-overview reveal">
+            <h3>what is it?</h3>
+            <p>A visualizer of patient genomic data and client internal knowledgebases for variant scientists to make actionable clinical insights.</p>
+            <br>
+            <p>...what does that even mean?</p>
+            <br>
+            <p>Without all the scientific terminology, I essentially helped create a tool that makes it much easier to see differences in a person’s DNA. This helps variant scientists explore genetic differences and identify if they're relevant to a diagnosis.</p>
+          </section>
+
+          <section id="role" class="case-overview reveal">
+            <h3>what did I do?</h3>
+            <p>I was the sole designer on this project, working with a developer partner to take the product from nothing to a mostly built-out MVP. I led design sprints, ran critique sessions, and led meetings with product and tech teams to figure out the problem and how best to solve it. Through lots of sketching, prototyping, and conversations with professionals in the field, I also created Figma prototypes for future features.</p>
+          </section>
+
+          <section id="takeaways" class="case-closing reveal">
+            <h3>takeaways</h3>
+            <p>Going into this project, I knew absolutely nothing about genomics, which was definitely intimidating at first! But it ended up being such an fun and interesting experience, and I loved having the freedom to explore the problem, learn from experts, and really take ownership of the design process.</p>
+            <br>
+            <p>I can’t share too much about this project publicly, but I’d love to talk about it more in-depth over a call. Send me a message at <a href="mailto:kateshih@utexas.edu">kateshih@utexas.edu</a>!</p>
+          </section>
+
+          <script>
+            document.addEventListener('DOMContentLoaded', function () {
+              const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                  }
+                });
+              }, { threshold: 0.12 });
+              document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+              const navLinks = document.querySelectorAll('.nav-panel a[href^="#"]');
+              const offset = 28;
+              navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                  e.preventDefault();
+                  const target = document.querySelector(link.getAttribute('href'));
+                  if (!target) return;
+                  navLinks.forEach(l => l.classList.remove('active'));
+                  link.classList.add('active');
+                  const top = window.scrollY + target.getBoundingClientRect().top - offset - 8;
+                  window.scrollTo({ top, behavior: 'smooth' });
+                });
+              });
+
+              const sections = Array.from(document.querySelectorAll('section[id]'));
+              let scrollspyTimeout;
+              function onScroll() {
+                const pos = window.scrollY + window.innerHeight / 3;
+                let current = sections.slice().reverse().find(s => s.offsetTop <= pos);
+                navLinks.forEach(l => l.classList.remove('active'));
+                if (current) {
+                  const active = document.querySelector('.nav-panel a[href="#' + current.id + '"]');
+                  if (active) active.classList.add('active');
+                }
+              }
+              window.addEventListener('scroll', () => {
+                clearTimeout(scrollspyTimeout);
+                scrollspyTimeout = setTimeout(onScroll, 100);
+              }, { passive: true });
+              onScroll();
+            });
+          </script>
+
+        </div>
+      </main>
+
+      <aside class="sidebar">
+        <div class="sidebar-inner">
+          <a href="index.html" class="case-backlink">back to work</a>
+
+          <div class="sidebar-project">
+            <h2 class="side-project">Genomic Variant Visualizer</h2>
+            <p class="side-desc">A tool that makes it easier to see and interpret variants in a person’s genome.</p>
+          </div>
+
+          <div class="panel exp-panel">
+            <p class="exp-credits"><strong>my role:</strong> UX Design Intern</p>
+            <p class="exp-credits"><strong>tools:</strong> Figma</p>
+            <p class="exp-credits"><strong>timeline:</strong> Summer 2026</p>
+          </div>
+
+          <div class="panel nav-panel">
+            <h4>jump to...</h4>
+            <ul>
+              <li><a href="#overview">overview</a></li>
+              <li><a href="#role">my role</a></li>
+              <li><a href="#takeaways">takeaways</a></li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+  </body>
+</html>

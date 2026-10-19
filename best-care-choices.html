@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Best Care Choices</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.png" type="image/png">
+  </head>
+  <body>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="index.html" class="brand-link"><span class="brand">kate shih</span></a>
+        <nav class="top-nav">
+          <a href="index.html#work">work</a>
+          <a href="about.html">about</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="main-grid">
+      <main class="content">
+        <div class="content-inner">
+
+          <header class="case-header">
+            <h1 class="case-title">Clarifying Complex Clinical Decisions</h1>
+            <div class="case-meta">
+              <div>Epic Systems</div>
+            </div>
+          </header>
+
+          <section class="case-hero reveal">
+            <img src="bcc/bcc-thumbnail.png" alt="Best Care Choices preview" class="case-hero-img" />
+          </section>
+
+          <section id="overview" class="case-overview reveal">
+            <h3>what is it?</h3>
+            <p>I worked on Epic’s “Best Care Choices for My Patient” feature, helping improve how users understand and interact with the tool, especially in less straightforward situations.</p>
+          </section>
+
+          <section id="role" class="case-overview reveal">
+            <h3>what did I do?</h3>
+            <p>I was the sole designer on this project, working with a developer partner. I ran design sprints, facilitated critique sessions, and talked directly with clinicians to better understand their needs. I also helped host a webinar with 70+ users, giving me the opportunity to engage with real clients and learn more about their experiences and wants for the product.</p>
+          </section>
+
+          <section id="takeaways" class="case-closing reveal">
+            <h3>takeaways</h3>
+            <p>This was a really valuable experience in learning how to design for an existing product and work within an established team. I got to conduct user research with real clients, talk directly with clinicians, and see how their feedback could inform design decisions. It was a great opportunity to learn how to improve an existing feature rather than starting from scratch!</p>
+            <br>
+            <p>I can’t share too much about this project publicly, but I’d love to talk about it more in-depth over a call. Send me a message at <a href="mailto:kateshih@utexas.edu">kateshih@utexas.edu</a>!</p>
+          </section>
+
+          <script>
+            document.addEventListener('DOMContentLoaded', function () {
+              const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                  }
+                });
+              }, { threshold: 0.12 });
+              document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+              const navLinks = document.querySelectorAll('.nav-panel a[href^="#"]');
+              const offset = 28;
+              navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                  e.preventDefault();
+                  const target = document.querySelector(link.getAttribute('href'));
+                  if (!target) return;
+                  navLinks.forEach(l => l.classList.remove('active'));
+                  link.classList.add('active');
+                  const top = window.scrollY + target.getBoundingClientRect().top - offset - 8;
+                  window.scrollTo({ top, behavior: 'smooth' });
+                });
+              });
+
+              const sections = Array.from(document.querySelectorAll('section[id]'));
+              let scrollspyTimeout;
+              function onScroll() {
+                const pos = window.scrollY + window.innerHeight / 3;
+                let current = sections.slice().reverse().find(s => s.offsetTop <= pos);
+                navLinks.forEach(l => l.classList.remove('active'));
+                if (current) {
+                  const active = document.querySelector('.nav-panel a[href="#' + current.id + '"]');
+                  if (active) active.classList.add('active');
+                }
+              }
+              window.addEventListener('scroll', () => {
+                clearTimeout(scrollspyTimeout);
+                scrollspyTimeout = setTimeout(onScroll, 100);
+              }, { passive: true });
+              onScroll();
+            });
+          </script>
+
+        </div>
+      </main>
+
+      <aside class="sidebar">
+        <div class="sidebar-inner">
+          <a href="index.html" class="case-backlink">back to work</a>
+
+          <div class="sidebar-project">
+            <h2 class="side-project">Best Care Choices</h2>
+            <p class="side-desc">Improving how clinicians understand and use Epic’s “Best Care Choices for My Patient” feature.</p>
+          </div>
+
+          <div class="panel exp-panel">
+            <p class="exp-credits"><strong>my role:</strong> UX Design Intern</p>
+            <p class="exp-credits"><strong>tools:</strong> Figma, Illustrator</p>
+            <p class="exp-credits"><strong>timeline:</strong> Summer 2026</p>
+          </div>
+
+          <div class="panel nav-panel">
+            <h4>jump to...</h4>
+            <ul>
+              <li><a href="#overview">overview</a></li>
+              <li><a href="#role">my role</a></li>
+              <li><a href="#takeaways">takeaways</a></li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+  </body>
+</html>
