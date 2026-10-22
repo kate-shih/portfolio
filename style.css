@@ -299,3 +299,5 @@ body { background:#FFF8F9;}
 
 .case-closing a { color: #c5647a; text-decoration: underline; text-underline-offset: 3px; }
 .case-closing a:hover { color: #a84e64; }
+
+.case-quote { margin: 20px 0; padding: 4px 0 4px 20px; border-left: 3px solid #c5647a; font-style: italic; }

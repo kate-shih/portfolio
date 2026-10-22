@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Apovo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.png" type="image/png">
+  </head>
+  <body>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="index.html" class="brand-link"><span class="brand">kate shih</span></a>
+        <nav class="top-nav">
+          <a href="index.html#work">work</a>
+          <a href="about.html">about</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="main-grid">
+      <main class="content">
+        <div class="content-inner">
+
+          <header class="case-header">
+            <h1 class="case-title">Designing a More Personalized Cancer Care Journey</h1>
+            <div class="case-meta">
+              <div>Apovo</div>
+            </div>
+          </header>
+
+          <section class="case-hero reveal">
+            <img src="apovo/apovo-thumbnail.png" alt="Apovo preview" class="case-hero-img" />
+          </section>
+
+          <section id="overview" class="case-overview reveal">
+            <h3>overview</h3>
+            <p>Apovo is a digital health app that helps cancer patients navigate life outside of the hospital by connecting them with personalized resources and support throughout their care journey.</p>
+            <br>
+            <p>Apovo helps patients find resources that fit their individual needs, whether that's nutrition support, fitness classes, or group therapy. The app also uses an AI-powered chatbot that answers questions using credible medical sources and helps care teams identify when patients might need additional support.</p>
+          </section>
+
+          <section id="problem" class="case-problem reveal">
+            <h3>the problem</h3>
+            <p class="problem-text">Getting diagnosed with cancer is overwhelming, and a lot of the hardest parts happen outside the hospital. Patients are suddenly faced with an unfamiliar world of medical information, uncertainty, and emotional stress, often without knowing where to turn for answers. As one patient put it:</p>
+            <blockquote class="case-quote">“I was completely unprepared for the actual experience…they tell you not to research online, just wait for your oncologist. But in the meantime, I had so many questions and was terrified I was going to die.”</blockquote>
+            <br>
+            <img src="apovo/apovo-problem.png" alt="Overwhelmed patient" class="case-image" />
+            <br>
+            <br>
+            <p class="problem-text">Meanwhile, healthcare providers don't always have the time or resources to address every patient's unique needs. Some patients need help finding practical resources, while others need more emotional support. Apovo aims to bridge that gap by connecting patients with credible information and personalized resources that meet them where they are in their care journey.</p>
+            <br>
+            <img src="apovo/apovo-problem2.png" alt="Overwhelmed patient" class="case-image" />
+          </section>
+
+          <section id="role" class="case-overview reveal">
+            <h3>what do I do?</h3>
+            <p>As a Lead Designer, I oversee design decisions and work closely with another designer, developers, and the founder to bring Apovo's vision to life. I've led and facilitated user research, including interviews with 20+ patients, card sorts, usability testing, and focus groups. I use these findings to inform design decisions, iterate on app flows, and prototype new features in Figma. I've also contributed to Apovo's branding and created demo videos and pitch materials. Along the way, our team has presented at SXSW and won multiple pitch competitions!</p>
+            <br>
+            <img src="apovo/apovo-screens.png" alt="Overwhelmed patient" class="case-image" />
+          </section>
+
+          <section id="takeaways" class="case-closing reveal">
+            <h3>takeaways</h3>
+            <p>Working on Apovo has helped me grow a lot as a healthcare designer. I've become more comfortable navigating ambiguity and designing around sensitive topics, while learning how to translate research findings into meaningful product decisions. One of my biggest takeaways has been learning to balance patient needs, clinical accuracy, and technical feasibility while keeping empathy at the center of the design process.</p>
+          </section>
+
+          <script>
+            document.addEventListener('DOMContentLoaded', function () {
+              const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                  }
+                });
+              }, { threshold: 0.12 });
+              document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+              const navLinks = document.querySelectorAll('.nav-panel a[href^="#"]');
+              const offset = 28;
+              navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                  e.preventDefault();
+                  const target = document.querySelector(link.getAttribute('href'));
+                  if (!target) return;
+                  navLinks.forEach(l => l.classList.remove('active'));
+                  link.classList.add('active');
+                  const top = window.scrollY + target.getBoundingClientRect().top - offset - 8;
+                  window.scrollTo({ top, behavior: 'smooth' });
+                });
+              });
+
+              const sections = Array.from(document.querySelectorAll('section[id]'));
+              let scrollspyTimeout;
+              function onScroll() {
+                const pos = window.scrollY + window.innerHeight / 3;
+                let current = sections.slice().reverse().find(s => s.offsetTop <= pos);
+                navLinks.forEach(l => l.classList.remove('active'));
+                if (current) {
+                  const active = document.querySelector('.nav-panel a[href="#' + current.id + '"]');
+                  if (active) active.classList.add('active');
+                }
+              }
+              window.addEventListener('scroll', () => {
+                clearTimeout(scrollspyTimeout);
+                scrollspyTimeout = setTimeout(onScroll, 100);
+              }, { passive: true });
+              onScroll();
+            });
+          </script>
+
+        </div>
+      </main>
+
+      <aside class="sidebar">
+        <div class="sidebar-inner">
+          <a href="index.html" class="case-backlink">back to work</a>
+
+          <div class="sidebar-project">
+            <h2 class="side-project">Apovo</h2>
+            <p class="side-desc">A digital health app connecting cancer patients with personalized resources and support along their journey.</p>
+          </div>
+
+          <div class="panel exp-panel">
+            <p class="exp-credits"><strong>my role:</strong> Lead Designer (1 of 2)</p>
+            <p class="exp-credits"><strong>tools:</strong> Figma, HTML/CSS, Claude Code</p>
+            <p class="exp-credits"><strong>timeline:</strong> January 2024 – Present</p>
+          </div>
+
+          <div class="panel nav-panel">
+            <h4>jump to...</h4>
+            <ul>
+              <li><a href="#overview">overview</a></li>
+              <li><a href="#problem">the problem</a></li>
+              <li><a href="#role">my role</a></li>
+              <li><a href="#takeaways">takeaways</a></li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+  </body>
+</html>
